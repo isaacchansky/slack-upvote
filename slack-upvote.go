@@ -65,6 +65,9 @@ func VoteHandler(rw http.ResponseWriter, r *http.Request) {
 				m.Votes++
 			case "-":
 				m.Votes--
+			case "~"
+				// reset mention
+				m.Votes = 0
 			}
 		}
 		db.C("mentions").UpsertId(m.Id, m)
