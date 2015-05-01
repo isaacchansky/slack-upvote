@@ -27,7 +27,7 @@ func VoteHandler(rw http.ResponseWriter, r *http.Request) {
 	}
 	isCmd := len(r.Form["command"]) > 0
 	isTrg := len(r.Form["trigger_word"]) > 0
-	db := session.Get("SLACKVOTE_DB").DB("slack-upvote")
+	db := session.Get("MONGOLAB_URI").DB(os.Getenv("SLACKVOTE_DB_NAME"))
 	mentionId := r.Form["text"][0]
 	teamId := r.Form["team_id"][0]
 	sfx := ""
